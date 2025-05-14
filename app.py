@@ -31,6 +31,10 @@ def delete_todo(index):
         todos.pop(index)
     return render_template("index.html", todos=todos)
 
+@app.route('/')
+def home():
+    return render_template('index.html', todos=todos)
+
 # Start the Flask server
 if __name__ == '__main__':
     app.run(debug=True)
