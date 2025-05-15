@@ -1,105 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Todos</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      max-width: 600px;
-      margin: 40px auto;
-      padding: 20px;
-      background-color: #f9f9f9;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-
-    h1 {
-      text-align: center;
-      color: #333;
-    }
-
-    form {
-      margin: 10px 0;
-    }
-
-    input[type="text"] {
-      padding: 10px;
-      width: 60%;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-
-    button {
-      padding: 8px 14px;
-      margin-left: 5px;
-      background-color: #3498db;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    button:hover {
-      background-color: #2980b9;
-    }
-
-    ul {
-      list-style-type: none;
-      padding: 0;
-    }
-
-    li {
-      padding: 12px;
-      background-color: white;
-      margin: 8px 0;
-      border-radius: 5px;
-      border-left: 5px solid #3498db;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    li form {
-      display: inline;
-    }
-
-    .task-text {
-      flex-grow: 1;
-    }
-
-    .buttons {
-      display: flex;
-      gap: 6px;
-    }
-  </style>
-</head>
-<body>
-  <h1>List of Todos</h1>
-
-  <!-- Add Todo Form -->
-  <form method="POST" action="/todos">
-    <input type="text" name="task" placeholder="Enter task" required>
-    <button type="submit">Add Todo</button>
+  <title>Todo List</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <div class="container">
+    <div class="header-row">
+      <h2>Hello, {{ current_user.username }}!</h2>
+      <form method="GET" action="/logout" class="logout-form">
+        <button type="submit">Logout</button>
+      </form>      
+    </div>
+  
+    <form method="POST" action="/todos" class="add-task-form">
+      <input type="text" name="task" placeholder="Enter a task" required>
+      <input type="submit" value="Add">
+    </form>
+  
+    <ul>
+      {% for todo in todos %}
+        <li>
+          <div class="todo-text">
+            {{ loop.index }}. <strong>{{ todo.task }}</strong> — <em>{{ todo.status }}</em>
+          </div>
+          <div class="todo-actions">
+            <form method="POST" action="/todos/toggle/{{ todo.id }}">
+              <button type="submit">Toggle</button>
+            </form>
+            <form method="POST" action="/todos/delete/{{ todo.id }}">
+              <button type="submit">Delete</button>
+            </form>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>  
   </form>
-
-  <ul>
-    {% for todo in todos %}
-      <li>
-        <span class="task-text">{{ loop.index }}. <strong>{{ todo.task }}</strong> — <em>{{ todo.status }}</em></span>
-        <div class="buttons">
-          <!-- Toggle Status Button -->
-          <form method="POST" action="/todos/toggle/{{ loop.index0 }}">
-            <button type="submit">Toggle</button>
-          </form>
-
-          <!-- Delete Button -->
-          <form method="POST" action="/todos/{{ loop.index0 }}">
-            <button style="background-color: #e74c3c;">Delete</button>
-          </form>
-        </div>
-      </li>
-    {% endfor %}
-  </ul>
 </body>
 </html>
