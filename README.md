@@ -34,15 +34,17 @@ A simple, mobile-friendly Todo web application built using **Flask**, with user 
 
 todo-flask-app/
 │
-├── app.py # Main Flask app
-├── model.py # Database models
-├── /templates # HTML templates
-│ ├── login.html
-│ ├── register.html
-│ └── index.html
-├── /static
-│ └── style.css # Styling for all pages
-└── README.md
+project/
+├── app.py
+├── models.py
+├── templates/
+│   ├── index.html
+│   ├── login.html
+│   └── register.html
+├── static/
+│   └── style.css
+└── requirements.txt
+
 
 yaml
 Copy
