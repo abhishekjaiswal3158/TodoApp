@@ -15,12 +15,17 @@ A simple, mobile-friendly Todo web application built using **Flask**, with user 
 ---
 
 ## 🚀 Demo
-
+Login page:
 ![image](https://github.com/user-attachments/assets/78039274-1bfa-4847-8102-578e3e5ef9ab)
+Register Page:
 ![image](https://github.com/user-attachments/assets/2c7e943e-4c17-4dc8-8ae0-70d00cc0cd4c)
+Todo list:
 ![image](https://github.com/user-attachments/assets/575e43bf-0dc9-413b-a1c0-d7112d0c5f2e)
+
 ![image](https://github.com/user-attachments/assets/1b8952d9-1fcf-4b46-9fa4-a568def95834)
+
 ![image](https://github.com/user-attachments/assets/1407700a-e846-48d2-8604-0cba9d4d6305)
+
 ![image](https://github.com/user-attachments/assets/505c43b4-24f7-47ca-850d-7ced9f7ca8c5)
 
 ---
